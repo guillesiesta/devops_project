@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: prometheus-loadbalancer
+  namespace: monitoring
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 80
+      targetPort: 9090
+  selector:
+    app.kubernetes.io/instance: prometheus
+    app.kubernetes.io/name: prometheus
